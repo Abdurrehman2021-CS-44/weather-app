@@ -22,21 +22,28 @@ app.post("/", function(req, res){
     https.get(url, function(response){
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
-            console.log(weatherData);
-            const weatherIcon = "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
-            const cityName = weatherData.name;
-            const temperature = Math.round(weatherData.main.temp);
-            const feelsLike = Math.round(weatherData.main.feels_like);
-            const humidity = weatherData.main.humidity;
-            const description = weatherData.weather[0].description;
-            res.render("resultPage", {
-                weatherImage: weatherIcon,
-                temperature: temperature,
-                desc: description,
-                location: cityName,
-                feelsLike: feelsLike,
-                humidity: humidity
-            })
+            if (weatherData.message){
+                res.render("response", {
+                    responseTitle: "OOPS! 🕸",
+                    responseDisc: weatherData.message,
+                    responseSuggestion: "Try another city"
+                });
+            } else {
+                const weatherIcon = "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
+                const cityName = weatherData.name;
+                const temperature = Math.round(weatherData.main.temp);
+                const feelsLike = Math.round(weatherData.main.feels_like);
+                const humidity = weatherData.main.humidity;
+                const description = weatherData.weather[0].description;
+                res.render("resultPage", {
+                    weatherImage: weatherIcon,
+                    temperature: temperature,
+                    desc: description,
+                    location: cityName,
+                    feelsLike: feelsLike,
+                    humidity: humidity
+                })
+            }
         });
     });
 });

@@ -49,3 +49,7 @@
 .desc {
     text-transform: capitalize;
 }
+
+.error-message {
+    text-transform: capitalize;
+}
