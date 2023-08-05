@@ -25,8 +25,8 @@ app.post("/", function(req, res){
             console.log(weatherData);
             const weatherIcon = "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
             const cityName = weatherData.name;
-            const temperature = weatherData.main.temp;
-            const feelsLike = weatherData.main.feels_like;
+            const temperature = Math.round(weatherData.main.temp);
+            const feelsLike = Math.round(weatherData.main.feels_like);
             const humidity = weatherData.main.humidity;
             const description = weatherData.weather[0].description;
             res.render("resultPage", {
