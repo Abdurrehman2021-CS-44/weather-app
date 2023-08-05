@@ -14,10 +14,6 @@ app.get("/", function(req, res){
     res.render("searchPage")
 });
 
-app.get("/result", function(req, res){
-    res.render("resultPage")
-});
-
 app.post("/", function(req, res){
     const cityName = req.body.city;
     const apiKey = "b64d8c946a1cf7381032ac0de8648349";
@@ -30,8 +26,17 @@ app.post("/", function(req, res){
             const weatherIcon = "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
             const cityName = weatherData.name;
             const temperature = weatherData.main.temp;
+            const feelsLike = weatherData.main.feels_like;
+            const humidity = weatherData.main.humidity;
             const description = weatherData.weather[0].description;
-            res.send("<h1>The temperature in " + cityName + " is " + temperature + " in celcius.</h1><p>The weather is currently " + description + ".</p><img src=" + weatherIcon + ">");
+            res.render("resultPage", {
+                weatherImage: weatherIcon,
+                temperature: temperature,
+                desc: description,
+                location: cityName,
+                feelsLike: feelsLike,
+                humidity: humidity
+            })
         });
     });
 });

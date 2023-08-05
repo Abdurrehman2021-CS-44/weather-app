@@ -25,3 +25,21 @@
     position: relative;
     left: 15px;
 }
+
+.weather-img {
+    margin: 0;
+    padding: 0;
+    transform: scale(1.5);
+}
+
+.background-color {
+    background-color: rgba(169, 205, 192, 0.284);
+}
+
+.temp {
+    font-size: 60px;
+}
+
+.desc {
+    text-transform: capitalize;
+}

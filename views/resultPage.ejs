@@ -2,34 +2,34 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-4 text-center border border-bottom-0 rounded-0 rounded-top">
-                <img src="">
-                <p class="h1">Temperature</p>
-                <p class="h4">Description</p>
-                <p class="h4 mb-5">Location</p>
+            <div class="col-4 text-center border border-bottom-0 rounded-0 rounded-top background-color">
+                <img class="mt-3 weather-img" src=<%=weatherImage%>>
+                <p class="h1 temp"><%=temperature%>'C</p>
+                <p class="h4 desc"><%=desc%></p>
+                <p class="h4 mb-5"><i class="bi bi-geo-alt h5"></i> <%=location%></p>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-2 text-center border feels-like py-3">
+            <div class="col-2 text-center border feels-like py-3 background-color">
                 <div class="row justify-content-center">
                     <div class="col-4 mt-1 icon">
                         <i class="bi bi-thermometer-sun h2 text-primary"></i>
                     </div>
                     <div class="col-6">
-                        <p class="m-0 p-0 h4">17'C</p>
+                        <p class="m-0 p-0 h4"><%=feelsLike%>'C</p>
                         <p class="m-0 p-0">Feels like</p>
                     </div>
                 </div>
             </div>
-            <div class="col-2 text-center border humidity py-3">
+            <div class="col-2 text-center border humidity py-3 background-color">
                 <div class="row justify-content-center">
                     <div class="col-4 mt-1 icon">
                         <i class="bi bi-droplet-half h2 text-primary"></i>
                     </div>
                     <div class="col-6">
-                        <p class="m-0 p-0 h4">84%</p>
+                        <p class="m-0 p-0 h4"><%=humidity%> %</p>
                         <p class="m-0 p-0">Humidity</p>
                     </div>
                 </div>
