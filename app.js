@@ -14,6 +14,10 @@ app.get("/", function(req, res){
     res.render("searchPage")
 });
 
+app.get("/result", function(req, res){
+    res.render("resultPage")
+});
+
 app.post("/", function(req, res){
     const cityName = req.body.city;
     const apiKey = "b64d8c946a1cf7381032ac0de8648349";
