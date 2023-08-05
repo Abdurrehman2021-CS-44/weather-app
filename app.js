@@ -1,13 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
+const ejs = require("ejs");
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"))
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html");
+    res.render("searchPage")
 });
 
 app.post("/", function(req, res){
@@ -18,6 +22,7 @@ app.post("/", function(req, res){
     https.get(url, function(response){
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
+            console.log(weatherData);
             const weatherIcon = "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
             const cityName = weatherData.name;
             const temperature = weatherData.main.temp;
@@ -29,4 +34,4 @@ app.post("/", function(req, res){
 
 app.listen(3000, function(){
     console.log("Server is running on 3000 port");
-})
+});
